@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+var cors=require('cors')
+app.use(cors())
 const mongoose = require("mongoose");
 
 require("dotenv").config();
@@ -15,7 +17,7 @@ app.post("/signin", createAccount);
 app.post("/login", login);
 app.post("/createnotebook", createnotebook);
 app.get("/allNotes",getNotes);
-app.put("/update/:id",updateNotebook)
+app.put("/update/:id", updateNotebook)
 app.delete("/delete/:id",deleteNotebook)
 
 mongoose.connect(process.env.MONGO_URL)
